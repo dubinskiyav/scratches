@@ -11,7 +11,7 @@ class JoinTest {
         userArrayList.add(new User(3, "Александр", 6));
         userArrayList.add(new User(4, "Борис", 2));
         userArrayList.add(new User(5, "Юрий", 4));
-        System.out.println("          User");
+        System.out.println("          Users:");
         for (User u : userArrayList) {
             System.out.println(u.id + " " + u.name + " " + u.d_id);
         }
