@@ -1,0 +1,46 @@
+Для ручной сборки нужно:
+
+storedproc-cr
+commit (из IDEA)
+git push
+
+release.bat для storedproc-cr
+
+
+1) зайти терминальным клиентом Windows на сервер 10.15.3.3 (build)
+build.domain.gelicon.biz
+2) в каталоге D:\DISTRIB\GELIOS\ запустит команду .\make_project.bat gelios-cr.
+
+Для перезапуска и обновления экземпляров сервера GELIOS нужно:
+
+1) зайти терминальным клиентом Windows на сервер 10.15.3.3.
+2) в каталоге D:\DISTRIB\GELIOS\ запустит команду .\update_project.bat gelios-cr.
+
+Так же, обновление экземпляров сервера GELIOS запускается автоматически каждую ночь.
+
+
+[16.05.2020 12:30] Анатолий Беланков: После обновления Gradle в IDE устанавливаются настройки, которые ссылаются не на проект *storedproc-cr* и исходный код, а на готовый jar-файл библиотеки *storedproc-cr*.
+[16.05.2020 12:31] Анатолий Беланков: Это можно увидеть, нажав CTRL+ALT+SHIFT+S и перейдя на эту страницу:
+Нужно исправить это следующим образом:
+
+1. Удаляем ссылку на этот Jar-файл.
+2. Добавляем в зависимости проект:
+
+Посмотреть версии библиотек по путям:
+
+\\build.domain.gelicon.biz\distributive\GeliconUtilitiesCrimea\Develop\Trunk\GELIOS\common\
+
+\\build.domain.gelicon.biz\distributive\GeliconUtilitiesCrimea\Develop\Trunk\GELIOStest\common\
+
+
+Нужные jar-файлы можно получить из проекта storedproc-develop (в котором сейчас ведешь разработку), командой:
+gradlew.bat clean copyRuntimeLibs
+После этого нужные файлы можно найти в ./build/runtimeLibs
+
+Можно действовать по предлагаемым инструкциям в сообщениях.
+Удали storedproc-cr-entities-0.0.5.jar и попробуй снова.
+Лучше совсем удалить файл
+
+cd D:\WORK\Programming\storedproc-develop
+gradlew.bat clean copyRuntimeLibs
+файл storedproc-sql-0.0.9.jar появился
